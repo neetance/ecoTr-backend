@@ -4,6 +4,7 @@ import { connect } from 'mongoose'
 import dotenv from 'dotenv'
 import authRoutes from './routes/auth.js'
 import calcRoutes from './routes/calc.js'
+import cors from 'cors'
 
 // const authRoutes = require('./routes/auth')
 // const calcRoutes = require('./routes/calc')
