@@ -11,6 +11,11 @@ import calcRoutes from './routes/calc.js'
 const app = express()
 const port = process.env.PORT
 
+app.use(cors({
+  origin: 'http://localhost:5173', // Update with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}))
 app.use(json())
 
 dotenv.config()
