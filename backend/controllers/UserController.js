@@ -64,7 +64,7 @@ export async function additionalInfo(req, res) {
         user.city = city
         user.familyMembers = familyMembers
 
-        const cityavg = CityAvg.findOne({name: city})
+        const cityavg = await CityAvg.findOne({name: city})
         user.cityAvg = cityavg.cf
 
         await user.save()
