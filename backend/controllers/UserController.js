@@ -189,8 +189,9 @@ export async function allotCoins(req, res) {
         const numCorrect = req.body.numCorrect
         const email = req.user.email
 
-        const user = User.findOne({email})
+        const user = await User.findOne({email})
         user.coins += 2*numCorrect
+        user.givenQuiz = true
 
         res.status(200).send("Coins added")
     }
@@ -198,3 +199,4 @@ export async function allotCoins(req, res) {
         res.status(500).send(`${err}`)
     }
 }
+
