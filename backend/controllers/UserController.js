@@ -186,7 +186,7 @@ export async function getUser(req, res) {
 
 export async function allotCoins(req, res) {
     try {
-        const numCorrect = req.body.numCorrect
+        const numCorrect = parseInt(req.body.numCorrect, 10)
         const email = req.user.email
 
         const user = await User.findOne({email})
