@@ -13,7 +13,7 @@ const app = express()
 const port = process.env.PORT
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://ecotracker-ec.vercel.app/'],
+  origin: ['http://localhost:5173', 'https://ecotracker-ec.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }))
