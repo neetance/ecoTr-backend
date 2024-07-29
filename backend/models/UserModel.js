@@ -9,7 +9,8 @@ const userSchema = new Schema({
     city: {type: String, default: null},
     state: {type: String, default: null},
     familyMembers: {type: Number, default: 0},
-    cityAvg: {type: Number, default: null}
+    cityAvg: {type: Number, default: null},
+    givenQuiz: {type: Boolean, default: false}
 })
 
 const User = model('User', userSchema)
