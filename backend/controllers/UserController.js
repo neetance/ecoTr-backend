@@ -193,6 +193,8 @@ export async function allotCoins(req, res) {
         user.coins += 2*numCorrect
         user.givenQuiz = true
 
+        await user.save()
+
         res.status(200).send("Coins added")
     }
     catch (err) {
