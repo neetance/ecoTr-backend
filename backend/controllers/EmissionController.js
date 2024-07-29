@@ -4,6 +4,7 @@ export async function createEmission(req, res) {
     try {
         const {month, year, area, electricity, gas, gasusage, wood, priv, waste, meal, meals, renewable, renewunit} = req.body
         const email = req.user.email
+        console.log(email)
 
         const checkEmission = await Emission.findOne({
             user: email,
