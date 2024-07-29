@@ -183,3 +183,18 @@ export async function getUser(req, res) {
         res.status(500).send(`${err}`)
     }
 }
+
+export async function allotCoins(req, res) {
+    try {
+        const numCorrect = req.body.numCorrect
+        const email = req.user.email
+
+        const user = User.findOne({email})
+        user.coins += 2*numCorrect
+
+        res.status(200).send("Coins added")
+    }
+    catch (err) {
+        res.status(500).send(`${err}`)
+    }
+}
