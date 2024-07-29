@@ -10,6 +10,6 @@ router.get('/users', getAllUsers)
 router.post('/additionalInfo', additionalInfo)
 router.post('/forgotPass', forgotPassword)
 router.get('/getUser', authenticateUser, getUser)
-router.post('/coins', allotCoins)
+router.post('/coins', authenticateUser, allotCoins)
 
 export default router
