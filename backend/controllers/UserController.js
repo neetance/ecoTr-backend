@@ -85,8 +85,8 @@ export async function loginUser(req, res) {
         if (user && await compare(password, user.password))
         {
             const token = jwt.sign({id: user._id, email: user.email}, process.env.SECRET_KEY)
-            res.cookie('token', token, {httpOnly: true, secure: false})
-            res.status(200).send('Login successful')
+            //res.cookie('token', token, {httpOnly: true, secure: false})
+            res.status(200).json({message: 'Login successful', token})
         }
         else
             res.status(400).send('Invalid email or password')
