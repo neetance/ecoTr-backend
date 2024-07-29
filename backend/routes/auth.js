@@ -9,7 +9,7 @@ router.delete('/delete', authenticateUser, deleteUser)
 router.get('/users', getAllUsers)
 router.post('/additionalInfo', additionalInfo)
 router.post('/forgotPass', forgotPassword)
-router.get('/getUser', getUser)
+router.get('/getUser', authenticateUser, getUser)
 router.post('/coins', allotCoins)
 
 export default router
