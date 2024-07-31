@@ -28,9 +28,8 @@ export async function registerUser(req, res) {
         const checkUser = await User.findOne({email})
         if (checkUser)
             return res.status(400).send('Email already registered')
-
-        const hashedPassword = await hash(password, 10)
-        const user = new User({name, email, password: hashedPassword})
+        
+        const user = new User({name, email, password})
         await user.save()
 
         const { requestId } = await courier.send({
@@ -82,7 +81,7 @@ export async function loginUser(req, res) {
         if (!user)
             return res.status(400).send('Email not registered')
 
-        if (user && await compare(password, user.password))
+        if (user && password === user.password)
         {
             const token = jwt.sign({id: user._id, email: user.email}, process.env.SECRET_KEY)
             //res.cookie('token', token, {httpOnly: true, secure: false})
