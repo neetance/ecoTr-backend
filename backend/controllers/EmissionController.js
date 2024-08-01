@@ -1,4 +1,5 @@
 import Emission from '../models/EmissionModel.js'
+import User from '../models/UserModel.js'
 
 export async function createEmission(req, res) {
     try {
