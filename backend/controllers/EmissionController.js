@@ -89,7 +89,7 @@ export async function createEmission(req, res) {
                     totalFootprint: totalFootprint,
                 },
             },
-        });
+        })
         res.status(201).send("Created Successfully")
     }
     catch (err) {
