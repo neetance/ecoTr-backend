@@ -1,5 +1,8 @@
 import Emission from '../models/EmissionModel.js'
 import User from '../models/UserModel.js'
+import { CourierClient } from '@trycourier/courier'
+
+const courier = new CourierClient({ authorizationToken: process.env.COURIER_AUTH_KEY})
 
 export async function createEmission(req, res) {
     try {
