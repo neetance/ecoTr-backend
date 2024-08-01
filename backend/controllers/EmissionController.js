@@ -90,6 +90,7 @@ export async function createEmission(req, res) {
                 },
             },
         })
+        
         res.status(201).send("Created Successfully")
     }
     catch (err) {
