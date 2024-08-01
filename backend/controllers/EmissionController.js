@@ -11,6 +11,8 @@ export async function createEmission(req, res) {
             year: year
         })
 
+        const user = await User.findOne({email})
+
         if (checkEmission)
             return res.status(400).send('Emission data for this month and year already exists')
 
@@ -48,8 +50,8 @@ export async function createEmission(req, res) {
             year,
             region: area,
             electricity: electricityEmission,
-            gas: gasEmission,
-            gasusage,
+            gas,
+            gasusage: gasEmission,
             wood: woodEmission,
             priv: travelEmission,
             waste: wasteEmission,
@@ -61,6 +63,32 @@ export async function createEmission(req, res) {
             user: email
         })
         await emission.save()
+
+        const { requestId } = await courier.send({
+            message: {
+                to: {
+                    email: email,
+                },
+                template: "CKZGVMPJM04BJ5KSK48F49F5SHVN",
+                data: {
+                    Name: user.name,
+                    month: month,
+                    year: year,
+                    area: area,
+                    electricityEmission: electricityEmission,
+                    gas: gas,
+                    gasEmission: gasEmission,
+                    woodEmission: woodEmission,
+                    travelEmission: travelEmission,
+                    wasteEmission: wasteEmission,
+                    meal: meal,
+                    mealEmission: mealEmission,
+                    renewable: renewable,
+                    renewunit: renewunit,
+                    totalFootprint: totalFootprint,
+                },
+            },
+        });
         res.status(201).send("Created Successfully")
     }
     catch (err) {
