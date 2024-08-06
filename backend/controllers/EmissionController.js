@@ -76,7 +76,9 @@ export async function createEmission(req, res) {
             renewable,
             renewunit,
             totalemission: totalFootprint,
-            user: email
+            user: email,
+            priv_name_a, priv_old_a, priv_fuel_a, priv_mileage_a, priv_dist_a, priv_name_b, priv_old_b, priv_fuel_b, priv_mileage_b, priv_dist_b,
+            woodName: woodname
         })
         await emission.save()
 
