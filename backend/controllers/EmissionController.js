@@ -6,7 +6,7 @@ const courier = new CourierClient({ authorizationToken: process.env.COURIER_AUTH
 
 export async function createEmission(req, res) {
     try {
-        const {month, year, area, electricity, gas, gasusage, woodname, wood, priv_name_a, priv_old_a, priv_fuel_a, priv_mileage_a, priv_dist_a, priv_name_b, priv_old_b, priv_fuel_b, priv_mileage_b, priv_dist_b, waste, meal, meals, renewable, renewunit} = req.body
+        const {month, year, area, electricity, gas, gasusage, wastetype, woodname, wood, priv_name_a, priv_old_a, priv_fuel_a, priv_mileage_a, priv_dist_a, priv_name_b, priv_old_b, priv_fuel_b, priv_mileage_b, priv_dist_b, waste, meal, meals, renewable, renewunit} = req.body
         const email = req.user.email
 
         const checkEmission = await Emission.findOne({
@@ -109,7 +109,7 @@ export async function createEmission(req, res) {
                       tarvelEmission: travelEmission,
                       meal,
                       mealEmission,
-                      wasteans: "wasteans",
+                      wasteans: wastetype,
                       wasteEmission,
                       renewable,
                       renewunit,
