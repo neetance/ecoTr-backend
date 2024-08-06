@@ -35,7 +35,19 @@ export async function createEmission(req, res) {
 
         const woodEmission = wood * 1.6 * 4;
 
-        const travelEmission = priv / 36.6;
+        var v1 = priv_dist_a/priv_mileage_a;
+        if (priv_fuel_a === 'petrol')
+            v1 = v1*2.2
+        else
+            v1 = v1*2.6
+
+        var v2 = priv_dist_b/priv_mileage_b;
+        if (priv_fuel_b === 'petrol')
+            v2 = v2*2.2
+        else
+            v2 = v2*2.6
+
+        const travelEmission = v1 + v2;
 
         const wasteEmission = waste * 1.49 * 4;
 
@@ -75,22 +87,33 @@ export async function createEmission(req, res) {
                 },
                 template: "CKZGVMPJM04BJ5KSK48F49F5SHVN",
                 data: {
-                    Name: user.name,
-                    month: month,
-                    year: year,
-                    area: area,
-                    electricityEmission: electricityEmission,
-                    gas: gas,
-                    gasEmission: gasEmission,
-                    woodEmission: woodEmission,
-                    travelEmission: travelEmission,
-                    wasteEmission: wasteEmission,
-                    meal: meal,
-                    mealEmission: mealEmission,
-                    renewable: renewable,
-                    renewunit: renewunit,
-                    totalFootprint: totalFootprint,
-                },
+                      Name: user.name,
+                      month,
+                      year,
+                      area,
+                      electricityEmission,
+                      gas,
+                      gasEmission,
+                      woodname,
+                      wood,
+                      namea: priv_name_a,
+                      olda: priv_old_a,
+                      fuela: priv_fuel_a,
+                      dista: priv_dist_a,
+                      nameb: priv_name_b,
+                      oldb: priv_old_b,
+                      fuelb: priv_fuel_b,
+                      distb: priv_dist_b,
+                      tarvelEmission: travelEmission,
+                      meal,
+                      mealEmission,
+                      wasteans: "wasteans",
+                      wasteEmission,
+                      renewable,
+                      renewunit,
+                      totalFootprint,
+                      woodEmission
+                    },
             },
         })
         
